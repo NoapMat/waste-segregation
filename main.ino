@@ -24,7 +24,7 @@ void loop() {
     delay(1000);
     int digValue = digitalRead(ir_sen);
     if (digValue == HIGH) {
-        Serial.println("waste in");
+        Serial.println("Waste In");
         // dry or wet compartment
         int cap_one = A0;
         int cap_two = A1;
@@ -33,7 +33,7 @@ void loop() {
         senVal2 = analogRead(cap_two);
         senVal3 = analogRead(cap_three);
         if (senVal1 < 700 || senVal2 < 700 || senVal3 < 700) {
-            Serial.println("wet waste detected.open flap2");
+            Serial.println("Wet waste detected. OpenFLAP2");
             Serial.println(senVal1);
             Serial.println(senVal2);
             Serial.println(senVal3);
@@ -57,8 +57,8 @@ void loop() {
 
             if (reading < 500) {
                 Serial.println("Metal Detected");
-                Serial.println("rotate motor clkwise and stop");
-                motor1.run(FORWARD); //dc motor clkwise
+                Serial.println("Rotate Motor clockwise and stop");
+                motor1.run(FORWARD);
                 for (i = 180; i < 130; i++) {
                     motor1.setSpeed(i);
                     delay(5);
@@ -68,10 +68,10 @@ void loop() {
                     motor1.setSpeed(i);
                     delay(5);
                 }
-                Serial.println("metal bin in position.stop motor.");
+                Serial.println("Metal bin in position. Stop Motor.");
                 motor1.run(RELEASE);
                 delay(5000);
-                Serial.println("flap open");
+                Serial.println("FLAP open");
                 for (pos1 = 0; pos1 <= 75; pos1 += 1) {
                     servo2.write(pos1);
                     delay(15);
@@ -82,7 +82,7 @@ void loop() {
                     delay(15);
 
                 }
-                Serial.println("close flap");
+                Serial.println("Close FLAP");
                 delay(5000);
 
                 motor1.run(BACKWARD);
@@ -98,8 +98,8 @@ void loop() {
                 motor1.run(RELEASE);
                 delay(5000);
             } else {
-                Serial.println("dry waste detected");
-                Serial.println("rotate motor anticlkwise");
+                Serial.println("Dry waste Detected");
+                Serial.println("Rotate motor counterclockwise");
                 
                 // debug
                 // motor1.setSpeed();
@@ -114,11 +114,11 @@ void loop() {
                     motor1.setSpeed(i);
                     delay(5);
                 }
-                Serial.println("dry bin in position.stop motor.");
+                Serial.println("Dry bin in position. Stop Motor.");
 
                 motor1.run(RELEASE);
                 delay(5000);
-                Serial.println("open flap");
+                Serial.println("Open FLAP");
                 for (pos1 = 0; pos1 <= 75; pos1 += 1) {
                     servo2.write(pos1);
                     delay(15);
@@ -129,8 +129,8 @@ void loop() {
                     delay(15);
                 }
 
-                Serial.println("close flap");
-                Serial.println("back to position");
+                Serial.println("Close Flap");
+                Serial.println("Back to Position");
                 motor1.run(FORWARD);
                 for (i = 180; i < 130; i++) {
                     motor1.setSpeed(i);
